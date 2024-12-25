@@ -1,0 +1,58 @@
+#TEXT ANALYZER
+print("----------------TEXT ANALYZER----------------")
+
+#First, we ask the costumer to enter a text of his choice using input command.
+answer = input("Introduce the text you want to analyze: ")
+print("\n")
+
+#Therefore, we need to ask 3 letters to start the analysis.
+answer_a = input("Introduce the first letter you want to analyze: ".lower())
+answer_b = input("Introduce the second letter you want to analyze: ".lower())
+answer_c = input("Introduce the third letter you want to analyze: ".lower())
+
+print("\n")
+#In order to know, for the first analysis, the number of letter contained in the text, we create a list containing capital and lower letters.
+vocabulary = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
+               "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
+                 "v", "w", "x", "y", "z"]
+
+
+#Then, we use index method "count" to know the number.
+vocabulary_1 = answer.count(answer_a)
+vocabulary_2 = answer.count(answer_b)
+vocabulary_3 = answer.count(answer_c)
+
+print("----------------LETTER COUNTER----------------")
+#Once you have counted and stored the letters in the three previous variables, print it.
+print(f"The number of {answer_a} in this text is: {vocabulary_1}")
+print(f"The number of {answer_b} in this text is: {vocabulary_2}")
+print(f"The number of {answer_c} in this text is: {vocabulary_3}")
+
+print("\n")
+print("----------------WORD COUNTER----------------")
+#The second analysis we want to do is guessing how many words are in the text so we have to convert "answer" in a list and call len
+split_text = answer.split()
+words_text = len(split_text)
+print(f"The number of words of this text is: {words_text}")
+
+print("\n")
+#The third analysis we want to do is getting the first and final word of the text.
+first_word = split_text[0]
+last_word = split_text[-1]
+print(f"The first word is: {first_word}")
+print(f"The final word of this text is: {last_word}")
+
+print("\n")
+print("----------------INVERTER----------------")
+#4th analysis: we want to invert the list.
+invert_list = split_text[::-1]
+invert_text = " ".join(invert_list)
+print(f"If we order the text backwards, we obtain: '{invert_text}'")
+
+print("\n")
+print("----------------PYTHON FINDER----------------")
+#At last, we want to know if the word "Python" is inside the text so we operate with booleans.
+if "Python" in split_text:
+    print("It contains the word Python")
+else:
+    print("It does not contain the word Python")
