@@ -1,0 +1,69 @@
+import random
+print("----------NUMBER GUESSER----------")
+def sorteo():
+    return random.randint(1,101)
+
+def lore():
+    print("Hi!, Do you want to play a game?\nI have thought a number between 0 and 100.\nOf course, you will have 8 tries to do it.\nCan you guess which is it? ;)")
+    try:
+        try1 = int(input("Do you want to play? (1 = Yes / 0 = No): "))
+    except ValueError:
+        print("Invalid input! Please enter 1 or 0.")
+        return
+        
+    if try1 == 1:
+        print("Here we go!")
+        game_guesser()
+    elif try1 == 0:
+        print("See you next time!")
+        return
+    else:
+        print("Invalid choice. Exiting the game.")
+        return
+
+def game_guesser():
+    answer = sorteo()
+    tries = 8
+
+    while tries > 0:
+        try:
+            customer = int(input("Choose a number between 1 and 100: "))
+        except ValueError:
+            print("Invalid input! Please enter a valid number.")
+            continue
+
+        if customer < 1 or customer > 100:
+            print("You have to choose a number between 1 and 100!")
+            continue
+
+        if customer == answer:
+            print("YES!!!! You guessed it!")
+            newgame = input("Do you want to play one more time? (1 = Yes / 0 = No): ")
+            if newgame == "1":
+                game_guesser()
+                return
+            elif newgame == "0":
+                print("See you again soon!")
+                return
+            else:
+                print("Invalid choice. Exiting the game.")
+                return
+        elif customer < answer:
+            print("The number you chose is lower than the one I thought.")
+        elif customer > answer:
+            print("The number you chose is higher than the one I thought.")
+
+        tries -= 1
+        print(f"Tries left: {tries}")
+
+    print("You have no more tries!")
+    newgame = input("Do you want to play one more time? (1 = Yes / 0 = No): ")
+    if newgame == "1":
+        game_guesser()
+    elif newgame == "0":
+        print("See you again soon!")
+    else:
+        print("Invalid choice. Exiting the game.")
+
+print(lore())
+print(game_guesser())
